@@ -1,19 +1,24 @@
-package io.github.softwarecat.snake;
+package io.github.softwarecat.simplegameengine;
 
+import io.github.softwarecat.simplegameengine.input.InputPolling;
 import javafx.application.Application;
-import javafx.scene.Group;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Main extends Application {
+public class Game extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = new Group();
+        Parent root = FXMLLoader.load(getClass().getResource("main_view.fxml"));
         Scene scene = new Scene(root);
+
+        InputPolling.getInstance().pollScene(scene);
+
+        stage.setTitle("Game");
 
         stage.setScene(scene);
         stage.show();

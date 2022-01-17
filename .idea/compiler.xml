@@ -7,11 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Snake" />
+        <module name="SimpleGameEngine" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
-      <module name="Snake" target="17" />
+      <module name="SimpleGameEngine" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>
