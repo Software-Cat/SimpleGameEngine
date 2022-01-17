@@ -9,9 +9,10 @@ import java.util.List;
 
 public class InputPolling {
 
-    private static final List<InputAction> inputActions = new ArrayList<>();
     private static final InputPolling INSTANCE = new InputPolling();
     private static Scene scene;
+
+    private static final List<InputEventHandler<?>> inputHandlers = new ArrayList<>();
 
     public static InputPolling getInstance() {
         return INSTANCE;
@@ -20,8 +21,8 @@ public class InputPolling {
     private InputPolling() {
     }
 
-    public void addAction(InputAction action) {
-        inputActions.add(action);
+    public void addHandler(InputEventHandler<?> handler) {
+        inputHandlers.add(handler);
     }
 
     public void pollScene(Scene scene) {
@@ -30,8 +31,8 @@ public class InputPolling {
     }
 
     public void tick() {
-        for (InputAction action : inputActions) {
-            action.tick();
+        for (InputEventHandler<?> handler : inputHandlers) {
+            handler.tick();
         }
     }
 
@@ -61,8 +62,8 @@ public class InputPolling {
 
         @Override
         public void handle(KeyEvent keyEvent) {
-            for (InputAction action : inputActions) {
-                action.handle(keyEvent);
+            for (InputEventHandler<?> handler : inputHandlers) {
+                handler.handle(keyEvent);
             }
         }
     }
